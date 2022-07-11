@@ -13,6 +13,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+  BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
 
 steps:
 - task: NuGetToolInstaller@1
@@ -81,7 +82,7 @@ steps:
   inputs:
     SourceFolder: '$(outputDirectory)'
     Contents: '**/*.apk'
-    TargetFolder: '$(build.artifactstagingdirectory)/Release/android-$(Build.SourceBranchName).apk'
+    TargetFolder: '$(build.artifactstagingdirectory)/Release/android-$(BRANCH_NAME).apk'
     OverWrite: true
 - task: PublishBuildArtifacts@1
   inputs:
