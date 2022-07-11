@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # apkPath=$1
 # envName=$2
 # keystorePath=$3
@@ -10,9 +11,9 @@
 #dheeraj modification
 apkPath=$(ApkPath)
 
-echo "ApkPath  $(ApkPath)"
+echo $(ApkPath)
 
-echo "apkPath" $apkPath
+echo $apkPath
 
 exit 0
 
