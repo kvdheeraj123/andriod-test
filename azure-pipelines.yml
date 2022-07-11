@@ -82,7 +82,7 @@ steps:
   inputs:
     SourceFolder: '$(outputDirectory)'
     Contents: '**/*.apk'
-    TargetFolder: '$(build.artifactstagingdirectory)/Release/android-$(BRANCH_NAME).apk'
+    TargetFolder: '$(build.artifactstagingdirectory)/android-$(BRANCH_NAME)/'
     OverWrite: true
 - task: PublishBuildArtifacts@1
   inputs:
