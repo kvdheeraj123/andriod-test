@@ -1,5 +1,21 @@
 #!/bin/sh
-apkPath=$1
+# apkPath=$1
+# envName=$2
+# keystorePath=$3
+# keyAlias=$4
+# keystorePass=$5
+# minSdkVersion=$6
+# playStoreRelease=${7:-false}
+
+#dheeraj modification
+apkPath=$ApkPath
+
+echo "ApkPath " $ApkPath
+
+echo "apkPath" $apkPath
+
+exit 0
+
 envName=$2
 keystorePath=$3
 keyAlias=$4
