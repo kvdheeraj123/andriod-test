@@ -8,7 +8,8 @@ trigger:
 - features/*
 
 #release name
-name: $(SourceBranchName)_$(Date:yyyyMMdd)_$(Build.SourceVersion)
+name: $(SourceBranch)_$(Date:yyyyMMdd)
+#name: $(SourceBranchName)_$(Date:yyyyMMdd)_$(Build.SourceVersion)
 
 pool:
   vmImage: 'macos-latest'
