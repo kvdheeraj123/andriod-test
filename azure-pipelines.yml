@@ -15,6 +15,7 @@ variables:
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
   #BRANCH_NAME: $[replace(variables['Build.SourceBranchName'], '/', '-')]
   BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+  BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
 
 steps:
 - task: NuGetToolInstaller@1
@@ -77,6 +78,11 @@ steps:
     Contents: '**/*.apk'
     TargetFolder: '$(build.artifactstagingdirectory)/Release/'
     OverWrite: true
+# - task: Bash@3
+#   inputs:
+#      targetType: 'inline'
+#      script: |
+#      export BRANCH_NAME = echo $BRANCH_NAME | tr "/" -
 # Copy APK to APK with feature branch name
 - task: CopyFiles@2
   displayName: 'Copy APK to: $(Build.ArtifactStagingDirectory) with feature branch name'
