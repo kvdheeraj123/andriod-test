@@ -75,7 +75,14 @@ steps:
     Contents: '**/*.apk'
     TargetFolder: '$(build.artifactstagingdirectory)/Release/'
     OverWrite: true
-
+# Copy APK to APK with feature branch name
+- task: CopyFiles@2
+  displayName: 'Copy APK to: $(Build.ArtifactStagingDirectory) with feature branch name'
+  inputs:
+    SourceFolder: '$(outputDirectory)'
+    Contents: '**/*.apk'
+    TargetFolder: '$(build.artifactstagingdirectory)/Release/android-$(Build.SourceBranchName).apk'
+    OverWrite: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
