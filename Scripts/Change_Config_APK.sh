@@ -8,9 +8,9 @@
 # playStoreRelease=${7:-false}
 
 #dheeraj modification
-apkPath=$ApkPath
+apkPath=$(ApkPath)
 
-echo "ApkPath " $ApkPath
+echo "ApkPath  $(ApkPath)"
 
 echo "apkPath" $apkPath
 
