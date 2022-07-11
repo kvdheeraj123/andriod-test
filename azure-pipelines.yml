@@ -13,7 +13,8 @@ pool:
 variables:
   buildConfiguration: 'Release'
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
-  BRANCH_NAME: $[replace(variables['Build.SourceBranchName'], '/', '-')]
+  #BRANCH_NAME: $[replace(variables['Build.SourceBranchName'], '/', '-')]
+  BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
 
 steps:
 - task: NuGetToolInstaller@1
