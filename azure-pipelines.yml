@@ -20,6 +20,9 @@ variables:
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
   #BRANCH_NAME: $[replace(variables['Build.SourceBranchName'], '/', '-')]
   BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+  MajorVersion: 1
+  MinorVersion: 0
+  InitialReleaseTagNumber: 1
   IncrementReleaseTagNumber: $[counter(variables['InitialReleaseTagNumber'], 0)]
 
 steps:
