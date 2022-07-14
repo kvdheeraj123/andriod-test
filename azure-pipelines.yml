@@ -20,6 +20,7 @@ variables:
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
   #BRANCH_NAME: $[replace(variables['Build.SourceBranchName'], '/', '-')]
   BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+  IncrementReleaseTagNumber: $[counter(variables['InitialReleaseTagNumber'], 0)]
 
 steps:
 - task: NuGetToolInstaller@1
