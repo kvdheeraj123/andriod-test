@@ -6,7 +6,7 @@
 trigger:
 - main
 - features/*
-- refs/tags/*
+- refs/tags/release-*
 
 #release name
 name: $(SourceBranch)_$(Date:yyyyMMdd)
