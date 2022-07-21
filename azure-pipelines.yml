@@ -105,12 +105,24 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-      - task: XamarinAndroid@1
-        inputs:
-          projectFile: '**/*droid*.csproj'
-          outputDirectory: '$(outputDirectory)'
-          cconfiguration: '$(buildConfiguration)'
-          clean: true
-          msbuildVersionOption: latest
-          msbuildArguments: '/p:AndroidPackageFormat=aab 
-                             /t:SignAndroidPackage'
+- task: XamarinAndroid@1
+  inputs:
+    projectFile: '**/*droid*.csproj'
+    outputDirectory: '$(outputDirectory)'
+    configuration: '$(buildConfiguration)'
+    clean: true
+    msbuildVersionOption: latest
+    msbuildArguments: '/p:AndroidPackageFormat=aab 
+                       /t:SignAndroidPackage'
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.aab'
+    TargetFolder: '$(build.artifactstagingdirectory)/Release/'
+    OverWrite: true
+    flattenFolders: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)/Release/'
+    ArtifactName: 'drop'
+    publishLocation: Container
