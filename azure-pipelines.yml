@@ -99,8 +99,18 @@ steps:
     Contents: '**/*.apk'
     TargetFolder: '$(build.artifactstagingdirectory)/android-$(BRANCH_NAME)/'
     OverWrite: true
+####### ------>>>>> Additions to create AAB    
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+      - task: XamarinAndroid@1
+        inputs:
+          projectFile: '**/*droid*.csproj'
+          outputDirectory: '$(outputDirectory)'
+          cconfiguration: '$(buildConfiguration)'
+          clean: true
+          msbuildVersionOption: latest
+          msbuildArguments: '/p:AndroidPackageFormat=aab 
+                             /t:SignAndroidPackage'
