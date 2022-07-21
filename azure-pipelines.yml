@@ -112,8 +112,7 @@ steps:
     configuration: '$(buildConfiguration)'
     clean: true
     msbuildVersionOption: latest
-    msbuildArguments: '/p:AndroidPackageFormat=aab 
-                       /t:SignAndroidPackage'
+    msbuildArguments: '/p:AndroidPackageFormat=aab'
 - task: CopyFiles@2
   inputs:
     Contents: '**/*.aab'
