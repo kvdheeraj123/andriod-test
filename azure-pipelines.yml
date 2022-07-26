@@ -2,7 +2,7 @@
 # Build a Xamarin.Android project.
 # Add steps that test, sign, and distribute an app, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/xamarin
-#
+###
 trigger:
 - main
 - features/*
@@ -59,7 +59,10 @@ steps:
     apksignerArguments: --out $(outputDirectory)/com.sample.causerexception.apk
     apksignerKeyPassword: '123456'
     zipalign: true
-
+- task: DamienAicheh.mobile-versioning-task.update-android-version-manifest-task.UpdateAndroidVersionManifest@1
+  displayName: 'Update the Android Manifest version'
+  inputs:
+    androidManifestPath: '$(Build.SourcesDirectory)/CauserException/CauserException.Android/Properties/AndroidManifest.xml'
 # Copy Keystore
 - task: CopyFiles@2
   displayName: 'Copy Keystore to: $(Build.ArtifactStagingDirectory)'
