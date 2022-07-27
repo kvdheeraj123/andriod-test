@@ -63,6 +63,8 @@ steps:
   displayName: 'Update the Android Manifest version'
   inputs:
     androidManifestPath: '$(Build.SourcesDirectory)/CauserException/CauserException.Android/Properties/AndroidManifest.xml'
+    Version Code: '1.9.0'
+    VersionName: $BRANCH_NAME-$Build.BuildId
 # Copy Keystore
 - task: CopyFiles@2
   displayName: 'Copy Keystore to: $(Build.ArtifactStagingDirectory)'
